@@ -7,7 +7,7 @@ function Title() {
 
 function List() {
   return (
-    <React.Fragment>
+    <>
       <ul>
         <li>list item</li>
         <li>list item</li>
@@ -19,7 +19,7 @@ function List() {
         dolorem, ex iusto itaque totam neque perspiciatis eligendi, id quos
         unde!
       </p>
-    </React.Fragment>
+    </>
   );
 }
 const root = ReactDOM.createRoot(
