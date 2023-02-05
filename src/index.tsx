@@ -14,7 +14,7 @@ type TitleProps = {
 // }
 // interfaces can be inherited while types are not inherited.
 
-const Title = ({ name, year, text1 }: TitleProps) => {
+const Title = ({ name, year, text1 = "test" }: TitleProps) => {
   return (
     <>
       <h1>
