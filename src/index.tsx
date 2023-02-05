@@ -1,23 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-function List() {
-  return (
-    <>
-      <ul>
-        <li>list item</li>
-        <li>list item</li>
-        <li>list item</li>
-      </ul>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo, commodi
-        tempora rem dolore saepe voluptatem mollitia ab! Tenetur tempora
-        dolorem, ex iusto itaque totam neque perspiciatis eligendi, id quos
-        unde!
-      </p>
-    </>
-  );
-}
+// import BlaBla from "./List";
+import { List } from "./List";
 
 type TitleProps = {
   name: string;
@@ -48,6 +32,7 @@ const App = () => {
       <Title name="React" year={1} />
       <Title name="TS" year={115} />
       <Title name="JS" year={97} />
+      {/* <BlaBla /> */}
       <List />
     </div>
   );
