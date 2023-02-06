@@ -1,4 +1,4 @@
-import "./List.css";
+import classes from "./List.module.css";
 
 type Props = {};
 export const List = (props: Props) => {
@@ -23,7 +23,9 @@ export const List = (props: Props) => {
         unde!
       </p>
 
-      <p className={` descr ${data ? "content" : "test"}`}>
+      <p
+        className={`${classes.descr} ${data ? classes.content : classes.test}`}
+      >
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo, commodi
         tempora rem dolore saepe voluptatem mollitia ab! Tenetur tempora
         dolorem, ex iusto itaque totam neque perspiciatis eligendi, id quos
