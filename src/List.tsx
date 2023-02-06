@@ -1,9 +1,11 @@
+import "./List.css";
+
 type Props = {};
 export const List = (props: Props) => {
   let data = true;
   return (
     <>
-      <ul>
+      <ul className="content">
         <li>list item1</li>
         <li>list item2</li>
         <li>list item3</li>
