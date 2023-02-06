@@ -5,7 +5,7 @@ export const List = (props: Props) => {
   let data = true;
   return (
     <>
-      <ul className="content">
+      <ul className="content descr">
         <li>list item1</li>
         <li>list item2</li>
         <li>list item3</li>
@@ -17,6 +17,13 @@ export const List = (props: Props) => {
           padding: "15px",
         }}
       >
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo, commodi
+        tempora rem dolore saepe voluptatem mollitia ab! Tenetur tempora
+        dolorem, ex iusto itaque totam neque perspiciatis eligendi, id quos
+        unde!
+      </p>
+
+      <p className={` descr ${data ? "content" : "test"}`}>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo, commodi
         tempora rem dolore saepe voluptatem mollitia ab! Tenetur tempora
         dolorem, ex iusto itaque totam neque perspiciatis eligendi, id quos

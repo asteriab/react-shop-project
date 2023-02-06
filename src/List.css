@@ -1,5 +1,12 @@
 .content {
-    color: white;
     background-color: darkblue;
+}
+
+.test {
+    background-color: tomato;
+}
+
+.descr {
+    color: white;
     padding: 15px;
 }
