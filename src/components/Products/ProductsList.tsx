@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@mui/material";
-import ProductsArray from "utils/ProductsArray";
+import ProductsArray, { Product } from "utils/ProductsArray";
 import ProductsListItem from "./ProductsListItem";
 
 type Props = {};
@@ -11,7 +11,7 @@ const ProductsList = (props: Props) => {
         List of Products
       </Typography>
       <Grid container spacing={4}>
-        {ProductsArray.map(function (product) {
+        {ProductsArray.map((product: Product) => {
           return (
             <Grid item xs={12} sm={6} md={4}>
               <ProductsListItem

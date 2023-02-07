@@ -1,5 +1,4 @@
 import { Button, Card, CardActions, CardContent } from "@mui/material";
-import { type } from "os";
 import "./ProductListItem.scss";
 
 type Props = {
