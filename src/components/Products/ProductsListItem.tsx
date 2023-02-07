@@ -1,4 +1,5 @@
 import { Button, Card, CardActions, CardContent } from "@mui/material";
+import "./ProductListItem.scss";
 
 type Props = {};
 const ProductsListItem = (props: Props) => {
@@ -11,7 +12,7 @@ const ProductsListItem = (props: Props) => {
         <div className="product-features">Capacity: 256 Gb</div>
         <div className="product-price">$500</div>
       </CardContent>
-      <CardActions>
+      <CardActions className="btns-wrap">
         <Button variant="outlined">Add To Cart</Button>
       </CardActions>
     </Card>
