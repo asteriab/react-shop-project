@@ -5,6 +5,7 @@ import {
     CardContent,
     TextField,
 } from '@mui/material'
+import { count } from 'console'
 import { Component } from 'react'
 import './ProductListItem.scss'
 
@@ -25,8 +26,15 @@ class ProductsListItem extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
-            count: 3,
+            count: 1,
         }
+        this.onIncrementClick = this.onIncrementClick.bind(this)
+    }
+
+    onIncrementClick() {
+        this.setState({
+            count: 2,
+        })
     }
 
     render() {
@@ -49,7 +57,12 @@ class ProductsListItem extends Component<Props, State> {
                     <div className="product-quantity">
                         <Button variant="outlined">-</Button>
                         <TextField size="small" value={this.state.count} />
-                        <Button variant="outlined">+</Button>
+                        <Button
+                            variant="outlined"
+                            onClick={this.onIncrementClick}
+                        >
+                            +
+                        </Button>
                     </div>
                 </CardContent>
                 <CardActions className="btns-wrap">
