@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@mui/material'
-import ProductsArray, { Product } from 'utils/ProductsArray'
+import ProductsArray from 'utils/ProductsArray'
 import ProductsListItem from './ProductsListItem'
 
 type Props = {}
@@ -24,10 +24,12 @@ const ProductsList = (props: Props) => {
                         capacity,
                         type,
                         price,
-                    }: Product) => {
+                        image,
+                    }) => {
                         return (
                             <Grid item xs={12} sm={6} md={4} key={id}>
                                 <ProductsListItem
+                                    image={image}
                                     title={title}
                                     description={description}
                                     type={type}

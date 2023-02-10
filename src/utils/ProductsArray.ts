@@ -5,6 +5,7 @@ export type Product = {
     type: string
     capacity: number
     price: number
+    image: string
 }
 
 const ProductsArray: Product[] = [
@@ -15,6 +16,7 @@ const ProductsArray: Product[] = [
         type: 'phone',
         capacity: 128,
         price: 200,
+        image: '/images/iphone_green.jpg',
     },
     {
         id: 2,
@@ -23,6 +25,7 @@ const ProductsArray: Product[] = [
         type: 'phone',
         capacity: 512,
         price: 1850,
+        image: '/images/iphone_purple.jpg',
     },
     {
         id: 3,
@@ -31,6 +34,7 @@ const ProductsArray: Product[] = [
         type: 'tablet',
         capacity: 512,
         price: 1200,
+        image: '/images/realme_pad.jpg',
     },
     {
         id: 4,
@@ -39,6 +43,7 @@ const ProductsArray: Product[] = [
         type: 'phone',
         capacity: 128,
         price: 200,
+        image: '/images/realme_white.jpg',
     },
     {
         id: 5,
@@ -47,6 +52,7 @@ const ProductsArray: Product[] = [
         type: 'phone',
         capacity: 512,
         price: 1850,
+        image: '/images/samsung_black.jpg',
     },
     {
         id: 6,
@@ -55,6 +61,7 @@ const ProductsArray: Product[] = [
         type: 'tablet',
         capacity: 512,
         price: 1200,
+        image: '/images/samsung_brown.jpg',
     },
 ]
 
