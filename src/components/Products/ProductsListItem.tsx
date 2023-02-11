@@ -35,7 +35,7 @@ class ProductsListItem extends Component<Props, State> {
 
     onDecrementClick = (num: number) => {
         this.setState((prevState) => ({
-            count: prevState.count - num,
+            count: prevState.count - num < 1 ? 1 : prevState.count - num,
         }))
     }
 
