@@ -5,6 +5,7 @@ import {
     CardContent,
     TextField,
 } from '@mui/material'
+import { red } from '@mui/material/colors'
 import { count } from 'console'
 import { Component } from 'react'
 import './ProductListItem.scss'
@@ -20,11 +21,15 @@ type Props = {
 
 type State = {
     count: number
+    color: string
+    show: boolean
 }
 
 class ProductsListItem extends Component<Props, State> {
     state = {
         count: 1,
+        color: 'green',
+        show: false,
     }
 
     onIncrementClick = () => {
@@ -36,6 +41,18 @@ class ProductsListItem extends Component<Props, State> {
     onDecrementClick = (num: number) => {
         this.setState((prevState) => ({
             count: prevState.count - num,
+        }))
+    }
+
+    changeColor = () => {
+        this.setState((prevState) => ({
+            color: prevState.color === 'red' ? 'green' : 'red',
+        }))
+    }
+
+    showText = () => {
+        this.setState((prevState) => ({
+            show: !prevState.show,
         }))
     }
 
@@ -55,11 +72,35 @@ class ProductsListItem extends Component<Props, State> {
                     <div className="product-features">
                         Capacity: {capacity}Gb
                     </div>
+
+                    <p>
+                        Color:
+                        <span className={this.state.color}>
+                            {this.state.color}
+                        </span>
+                    </p>
+                    <button onClick={this.changeColor}> Change color</button>
+                    {this.state.show && (
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Laboriosam eveniet a officia? Accusantium,
+                            recusandae cupiditate nisi quo quia aliquam a
+                            temporibus dolorum expedita atque quasi architecto
+                            nostrum veniam at doloribus?
+                        </p>
+                    )}
+
+                    <br />
+                    <button onClick={this.showText}>
+                        Show Full description
+                    </button>
+
                     <div className="product-price">${price}</div>
                     <div className="product-quantity">
                         <Button
                             variant="outlined"
                             onClick={() => this.onDecrementClick(3)}
+                            disabled={this.state.count <= 1}
                         >
                             -
                         </Button>
@@ -67,6 +108,7 @@ class ProductsListItem extends Component<Props, State> {
                         <Button
                             variant="outlined"
                             onClick={this.onIncrementClick}
+                            disabled={this.state.count >= 10}
                         >
                             +
                         </Button>
