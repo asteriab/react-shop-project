@@ -1,31 +1,47 @@
-import { Grid, Typography } from "@mui/material";
-import ProductsArray, { Product } from "utils/ProductsArray";
-import ProductsListItem from "./ProductsListItem";
+import { Grid, Typography } from '@mui/material'
+import ProductsArray from 'utils/ProductsArray'
+import ProductsListItem from './ProductsListItem'
 
-type Props = {};
+type Props = {}
 
 const ProductsList = (props: Props) => {
-  return (
-    <>
-      <Typography variant="h3" component="h2" align="center">
-        List of Products
-      </Typography>
-      <Grid container spacing={4}>
-        {ProductsArray.map((product: Product) => {
-          return (
-            <Grid item xs={12} sm={6} md={4}>
-              <ProductsListItem
-                title={product.title}
-                description={product.description}
-                type={product.type}
-                capacity={product.capacity}
-                price={product.price}
-              />
+    return (
+        <>
+            <Typography
+                variant="h3"
+                component="h2"
+                align="center"
+                sx={{ marginBottom: '30px' }}
+            >
+                List of Products
+            </Typography>
+            <Grid container spacing={4}>
+                {ProductsArray.map(
+                    ({
+                        id,
+                        title,
+                        description,
+                        capacity,
+                        type,
+                        price,
+                        image,
+                    }) => {
+                        return (
+                            <Grid item xs={12} sm={6} md={4} key={id}>
+                                <ProductsListItem
+                                    image={image}
+                                    title={title}
+                                    description={description}
+                                    type={type}
+                                    capacity={capacity}
+                                    price={price}
+                                />
+                            </Grid>
+                        )
+                    }
+                )}
             </Grid>
-          );
-        })}
-      </Grid>
-    </>
-  );
-};
-export default ProductsList;
+        </>
+    )
+}
+export default ProductsList
