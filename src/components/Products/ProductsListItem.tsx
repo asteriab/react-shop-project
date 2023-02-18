@@ -22,12 +22,14 @@ type Props = {
 type State = {
     count: number
     color: string
+    display: string
 }
 
 class ProductsListItem extends Component<Props, State> {
     state = {
         count: 1,
         color: 'green',
+        display: 'none',
     }
 
     onIncrementClick = () => {
@@ -45,6 +47,12 @@ class ProductsListItem extends Component<Props, State> {
     changeColor = () => {
         this.setState((prevState) => ({
             color: prevState.color === 'red' ? 'green' : 'red',
+        }))
+    }
+
+    showText = () => {
+        this.setState((prevState) => ({
+            display: prevState.display === 'none' ? 'block' : 'none',
         }))
     }
 
@@ -72,6 +80,18 @@ class ProductsListItem extends Component<Props, State> {
                         </span>
                     </p>
                     <button onClick={this.changeColor}> Change color</button>
+
+                    <p className={this.state.display}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Laboriosam eveniet a officia? Accusantium, recusandae
+                        cupiditate nisi quo quia aliquam a temporibus dolorum
+                        expedita atque quasi architecto nostrum veniam at
+                        doloribus?
+                    </p>
+                    <br />
+                    <button onClick={this.showText}>
+                        Show Full description
+                    </button>
 
                     <div className="product-price">${price}</div>
                     <div className="product-quantity">
