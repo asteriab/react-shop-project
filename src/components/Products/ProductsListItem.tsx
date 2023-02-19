@@ -15,6 +15,7 @@ type Props = {
     capacity: number
     price: number
     image: string
+    addProductToCart: Function
 }
 const ProductsListItem = ({
     title,
@@ -23,6 +24,7 @@ const ProductsListItem = ({
     capacity,
     price,
     image,
+    addProductToCart,
 }: Props) => {
     const [count, setCount] = useState<number>(1)
 
@@ -49,7 +51,7 @@ const ProductsListItem = ({
                 <div className="product-quantity">
                     <Button
                         variant="outlined"
-                        onClick={() => onDecrement}
+                        onClick={() => onDecrement()}
                         disabled={count <= 1}
                     >
                         -
@@ -57,7 +59,7 @@ const ProductsListItem = ({
                     <TextField size="small" value={count} />
                     <Button
                         variant="outlined"
-                        onClick={() => onIncrement}
+                        onClick={() => onIncrement()}
                         disabled={count >= 10}
                     >
                         +
@@ -65,7 +67,12 @@ const ProductsListItem = ({
                 </div>
             </CardContent>
             <CardActions className="btns-wrap">
-                <Button variant="outlined">Add To Cart</Button>
+                <Button
+                    onClick={() => addProductToCart(count, price)}
+                    variant="outlined"
+                >
+                    Add To Cart
+                </Button>
             </CardActions>
         </Card>
     )
