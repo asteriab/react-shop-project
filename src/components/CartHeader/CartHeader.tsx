@@ -1,10 +1,17 @@
-type Props = {};
-const CartHeader = (props: Props) => {
-  return (
-    <div>
-      <div>0</div>
-      <div>$0</div>
-    </div>
-  );
-};
-export default CartHeader;
+import { useState } from 'react'
+
+type Props = {
+    cartData: {
+        totalCount: number
+        totalPrice: number
+    }
+}
+const CartHeader = ({ cartData }: Props) => {
+    return (
+        <div>
+            <div>{cartData.totalCount}</div>
+            <div>${cartData.totalPrice}</div>
+        </div>
+    )
+}
+export default CartHeader

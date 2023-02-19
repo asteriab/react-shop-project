@@ -25,14 +25,13 @@ const ProductsListItem = ({
     image,
 }: Props) => {
     const [count, setCount] = useState<number>(1)
-    const [color, setColor] = useState<string>('green')
 
-    const onIncrement = (num: number) => {
-        setCount((prevState) => prevState + num)
+    const onIncrement = () => {
+        setCount((prevState) => prevState + 1)
     }
 
-    const onDecrement = (num: number) => {
-        setCount((prevState) => prevState - num)
+    const onDecrement = () => {
+        setCount((prevState) => prevState - 1)
     }
 
     return (
@@ -47,24 +46,10 @@ const ProductsListItem = ({
                 <div className="product-features">Capacity: {capacity}Gb</div>
                 <div className="product-price">${price}</div>
 
-                <div>
-                    Color:
-                    <span className={color}> {color}</span>
-                </div>
-                <button
-                    onClick={() =>
-                        setColor((prevState) =>
-                            prevState === 'green' ? 'red' : 'green'
-                        )
-                    }
-                >
-                    Change Color
-                </button>
-
                 <div className="product-quantity">
                     <Button
                         variant="outlined"
-                        onClick={() => onDecrement(3)}
+                        onClick={() => onDecrement}
                         disabled={count <= 1}
                     >
                         -
@@ -72,7 +57,7 @@ const ProductsListItem = ({
                     <TextField size="small" value={count} />
                     <Button
                         variant="outlined"
-                        onClick={() => onIncrement(3)}
+                        onClick={() => onIncrement}
                         disabled={count >= 10}
                     >
                         +

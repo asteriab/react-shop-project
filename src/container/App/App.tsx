@@ -1,18 +1,28 @@
-import Footer from "container/Footer/Footer";
-import Header from "container/Header/Header";
-import Main from "container/Main/Main";
-import CssBaseline from "@mui/material/CssBaseline";
-import { StyledEngineProvider } from "@mui/material/styles";
+import Footer from 'container/Footer/Footer'
+import Header from 'container/Header/Header'
+import Main from 'container/Main/Main'
+import CssBaseline from '@mui/material/CssBaseline'
+import { StyledEngineProvider } from '@mui/material/styles'
+import { useState } from 'react'
 
-type Props = {};
+type Props = {}
+type CartDataProps = {
+    totalCount: number
+    totalPrice: number
+}
 const App = (props: Props) => {
-  return (
-    <StyledEngineProvider injectFirst>
-      <CssBaseline />
-      <Header />
-      <Main />
-      <Footer />
-    </StyledEngineProvider>
-  );
-};
-export default App;
+    const [cartData, setCartData] = useState<CartDataProps>({
+        totalCount: 20,
+        totalPrice: 300,
+    })
+
+    return (
+        <StyledEngineProvider injectFirst>
+            <CssBaseline />
+            <Header cartData={cartData} />
+            <Main />
+            <Footer />
+        </StyledEngineProvider>
+    )
+}
+export default App
