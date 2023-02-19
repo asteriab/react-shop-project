@@ -15,7 +15,7 @@ type Props = {
     capacity: number
     price: number
     image: string
-    addProductToCart: Function
+    addProductToCart: (count: number, price: number) => void
 }
 const ProductsListItem = ({
     title,
