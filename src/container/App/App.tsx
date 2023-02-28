@@ -12,10 +12,7 @@ type ProductsInCartType = {
 }
 
 const App = (props: Props) => {
-    const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({
-        1: 5,
-        2: 5,
-    })
+    const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({})
 
     const addProductToCart = (id: number, count: number) => {
         setProductsInCart((prevState) => ({
@@ -23,35 +20,10 @@ const App = (props: Props) => {
             [id]: (prevState[id] || 0) + count,
         }))
     }
-
-    // const addProductToCart = (id: number, count: number) => {
-    //     setProductsInCart((prevState) => {
-    //         if (prevState[id] === undefined) {
-    //             return { ...prevState, [id]: 0 + count }
-    //         } else {
-    //             return {
-    //                 ...prevState,
-    //                 [id]: prevState[id] + count,
-    //             }
-    //         }
-    //     })
-    // }
-
-    // const addProductToCart = (id: number, count: number) => {
-    //     setProductsInCart((prevState) =>
-    //         Object.assign({}, prevState, { [id]: prevState[id] + count })
-    //     )
-    // }
-
-    // const addProductToCart = (id: number, count: number) => {
-    //     setProductsInCart((prevState) => ({ [id]: prevState[id] + count }))
-    // }
-
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-            <button onClick={() => addProductToCart(2, 5)}>Add to cart</button>
             <Main addProductToCart={addProductToCart} />
             <Footer />
         </StyledEngineProvider>
