@@ -4,6 +4,7 @@ import Main from 'container/Main/Main'
 import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
 import { useState } from 'react'
+import { count } from 'console'
 
 type Props = {}
 type ProductsInCartType = {
@@ -16,12 +17,14 @@ const App = (props: Props) => {
         2: 5,
     })
 
-    const addProductToCart = () => {}
+    const addProductToCart = (id: number, count: number) => {
+        setProductsInCart((prevState) => ({ [id]: prevState[id] + count }))
+    }
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-
+            <button onClick={() => addProductToCart(2, 5)}>Add to cart</button>
             <Main addProductToCart={addProductToCart} />
             <Footer />
         </StyledEngineProvider>
