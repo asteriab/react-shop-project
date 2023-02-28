@@ -4,7 +4,6 @@ import Main from 'container/Main/Main'
 import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
 import { useState } from 'react'
-import { count } from 'console'
 
 type Props = {}
 type ProductsInCartType = {
