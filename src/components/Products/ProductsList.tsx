@@ -31,6 +31,7 @@ const ProductsList = (props: Props) => {
                         return (
                             <Grid item xs={12} sm={6} md={4} key={id}>
                                 <ProductsListItem
+                                    id={id}
                                     addProductToCart={props.addProductToCart}
                                     image={image}
                                     title={title}
