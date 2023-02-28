@@ -20,9 +20,22 @@ const App = (props: Props) => {
     const addProductToCart = (id: number, count: number) => {
         setProductsInCart((prevState) => ({
             ...prevState,
-            [id]: prevState[id] + count,
+            [id]: (prevState[id] || 0) + count,
         }))
     }
+
+    // const addProductToCart = (id: number, count: number) => {
+    //     setProductsInCart((prevState) => {
+    //         if (prevState[id] === undefined) {
+    //             return { ...prevState, [id]: 0 + count }
+    //         } else {
+    //             return {
+    //                 ...prevState,
+    //                 [id]: prevState[id] + count,
+    //             }
+    //         }
+    //     })
+    // }
 
     // const addProductToCart = (id: number, count: number) => {
     //     setProductsInCart((prevState) =>
