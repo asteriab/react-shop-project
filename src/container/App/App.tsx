@@ -4,9 +4,12 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
 import { useState } from 'react'
 import { Container } from '@mui/system'
-import Home from 'pages/Home/Home'
+import Home from 'pages/HomePage/HomePage'
 import { Route, Routes } from 'react-router-dom'
 import CartPage from 'pages/CartPage/CartPage'
+import AboutPage from 'pages/AboutPage/AboutPage'
+import PaymentPage from 'pages/PaymentPage/PaymentPage'
+import ShippingPage from 'pages/ShippingPage/ShippingPage'
 
 type Props = {}
 type ProductsInCartType = {
@@ -33,6 +36,9 @@ const App = (props: Props) => {
                         element={<Home addProductToCart={addProductToCart} />}
                     />
                     <Route path="/cart" element={<CartPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/payment" element={<PaymentPage />} />
+                    <Route path="/shipping" element={<ShippingPage />} />
                 </Routes>
             </Container>
             <Footer />
