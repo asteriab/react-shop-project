@@ -1,10 +1,15 @@
 import Footer from 'container/Footer/Footer'
 import Header from 'container/Header/Header'
-import Main from 'container/Main/Main'
 import CssBaseline from '@mui/material/CssBaseline'
 import { StyledEngineProvider } from '@mui/material/styles'
 import { useState } from 'react'
-import { count } from 'console'
+import { Container } from '@mui/system'
+import Home from 'pages/HomePage/HomePage'
+import { Route, Routes } from 'react-router-dom'
+import CartPage from 'pages/CartPage/CartPage'
+import AboutPage from 'pages/AboutPage/AboutPage'
+import PaymentPage from 'pages/PaymentPage/PaymentPage'
+import ShippingPage from 'pages/ShippingPage/ShippingPage'
 
 type Props = {}
 type ProductsInCartType = {
@@ -12,20 +17,30 @@ type ProductsInCartType = {
 }
 
 const App = (props: Props) => {
-    const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({
-        1: 5,
-        2: 5,
-    })
+    const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({})
 
     const addProductToCart = (id: number, count: number) => {
-        setProductsInCart((prevState) => ({ [id]: prevState[id] + count }))
+        setProductsInCart((prevState) => ({
+            ...prevState,
+            [id]: (prevState[id] || 0) + count,
+        }))
     }
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-            <button onClick={() => addProductToCart(2, 5)}>Add to cart</button>
-            <Main addProductToCart={addProductToCart} />
+            <Container sx={{ padding: '60px 0' }}>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<Home addProductToCart={addProductToCart} />}
+                    />
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/payment" element={<PaymentPage />} />
+                    <Route path="/shipping" element={<ShippingPage />} />
+                </Routes>
+            </Container>
             <Footer />
         </StyledEngineProvider>
     )
