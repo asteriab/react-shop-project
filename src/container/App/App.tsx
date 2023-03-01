@@ -25,6 +25,13 @@ const App = (props: Props) => {
             [id]: (prevState[id] || 0) + count,
         }))
     }
+
+    const deleteProductFromCart = (id: number) => {
+        const tempCart = { ...productsInCart }
+        delete tempCart[id]
+        setProductsInCart(tempCart)
+    }
+
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
@@ -35,7 +42,15 @@ const App = (props: Props) => {
                         path="/"
                         element={<Home addProductToCart={addProductToCart} />}
                     />
-                    <Route path="/cart" element={<CartPage />} />
+                    <Route
+                        path="/cart"
+                        element={
+                            <CartPage
+                                productsInCart={productsInCart}
+                                deleteProductFromCart={deleteProductFromCart}
+                            />
+                        }
+                    />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/payment" element={<PaymentPage />} />
                     <Route path="/shipping" element={<ShippingPage />} />
