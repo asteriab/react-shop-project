@@ -9,6 +9,7 @@ type Props = {
     productCount: number
     deleteProductFromCart: Function
     changeProductQuantity: Function
+    minCount: number
 }
 
 const CartProductListItemExtended = ({
@@ -30,11 +31,17 @@ const CartProductListItemExtended = ({
                     <Quantity
                         count={productCount}
                         onDecrement={() =>
-                            changeProductQuantity(product.id, productCount - 1)
+                            productCount > 1
+                                ? changeProductQuantity(
+                                      product.id,
+                                      productCount - 1
+                                  )
+                                : deleteProductFromCart(product.id)
                         }
                         onIncrement={() =>
                             changeProductQuantity(product.id, productCount + 1)
                         }
+                        minCount={0}
                     />
                     <Button
                         variant="outlined"
