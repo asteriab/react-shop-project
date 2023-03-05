@@ -10,7 +10,7 @@ type Props = {
         [id: number]: Product
     }
     CartItem?: any
-    deleteProductFromCart: Function
+    deleteProductFromCart?: Function
 }
 
 const CartProductList = ({
