@@ -10,6 +10,7 @@ import CartPage from 'pages/CartPage/CartPage'
 import AboutPage from 'pages/AboutPage/AboutPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
+import { omit } from 'lodash'
 
 type Props = {}
 type ProductsInCartType = {
@@ -25,6 +26,18 @@ const App = (props: Props) => {
             [id]: (prevState[id] || 0) + count,
         }))
     }
+
+    const deleteProductFromCart = (id: number) => {
+        setProductsInCart((prevState) => omit(prevState, id))
+    }
+
+    const changeProductQuantity = (id: number, count: number) => {
+        setProductsInCart((prevState) => ({
+            ...prevState,
+            [id]: count,
+        }))
+    }
+
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
@@ -35,7 +48,16 @@ const App = (props: Props) => {
                         path="/"
                         element={<Home addProductToCart={addProductToCart} />}
                     />
-                    <Route path="/cart" element={<CartPage />} />
+                    <Route
+                        path="/cart"
+                        element={
+                            <CartPage
+                                productsInCart={productsInCart}
+                                deleteProductFromCart={deleteProductFromCart}
+                                changeProductQuantity={changeProductQuantity}
+                            />
+                        }
+                    />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/payment" element={<PaymentPage />} />
                     <Route path="/shipping" element={<ShippingPage />} />
