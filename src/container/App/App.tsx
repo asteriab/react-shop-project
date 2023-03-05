@@ -27,9 +27,11 @@ const App = (props: Props) => {
     }
 
     const deleteProductFromCart = (id: number) => {
-        const tempCart = { ...productsInCart }
-        delete tempCart[id]
-        setProductsInCart(tempCart)
+        setProductsInCart((prevState) => {
+            let tempCart = { ...prevState }
+            delete tempCart[id]
+            return tempCart
+        })
     }
 
     return (
@@ -44,7 +46,12 @@ const App = (props: Props) => {
                     />
                     <Route
                         path="/cart"
-                        element={<CartPage productsInCart={productsInCart} />}
+                        element={
+                            <CartPage
+                                productsInCart={productsInCart}
+                                deleteProductFromCart={deleteProductFromCart}
+                            />
+                        }
                     />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/payment" element={<PaymentPage />} />
