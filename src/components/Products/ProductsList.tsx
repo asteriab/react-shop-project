@@ -4,6 +4,10 @@ import ProductsListItem from './ProductsListItem'
 
 type Props = {
     addProductToCart: (count: number, price: number) => void
+    productsLike: {
+        [id: number]: boolean
+    }
+    likeBtnClick: Function
 }
 
 const ProductsList = (props: Props) => {
@@ -39,6 +43,8 @@ const ProductsList = (props: Props) => {
                                     type={type}
                                     capacity={capacity}
                                     price={price}
+                                    isLiked={props.productsLike[id]}
+                                    likeBtnClick={props.likeBtnClick}
                                 />
                             </Grid>
                         )
