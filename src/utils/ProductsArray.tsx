@@ -10,7 +10,7 @@ export type Product = {
 
 const ProductsArray: Product[] = [
     {
-        id: 10,
+        id: 1,
         title: 'iPhone 5',
         description: 'iPhone 5',
         type: 'phone',
