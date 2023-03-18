@@ -7,21 +7,15 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { toggleLike } from 'redux/likeReducer'
+import { changeProductQuantity, deleteProductFromCart } from 'redux/cartReducer'
 
 type Props = {
     product: Product
     productCount: number
-    deleteProductFromCart: Function
-    changeProductQuantity: Function
     minCount: number
 }
 
-const CartProductListItemExtended = ({
-    product,
-    productCount,
-    deleteProductFromCart,
-    changeProductQuantity,
-}: Props) => {
+const CartProductListItemExtended = ({ product, productCount }: Props) => {
     const isLiked = useAppSelector((state) => state.productsLike[product.id])
     const dispatch = useAppDispatch()
 
@@ -44,34 +38,55 @@ const CartProductListItemExtended = ({
                     <p>Count: {productCount}</p>
                     <Quantity
                         count={productCount}
-                        onDecrement={() =>
-                            productCount > 1
-                                ? dispatch({
-                                      type: 'CHANGE_PRODUCT_QUANTITY',
-                                      id: product.id,
-                                      count: productCount - 1,
-                                  })
-                                : dispatch({
-                                      type: 'DELETE_PRODUCT_FROM_CART',
-                                      id: product.id,
-                                  })
+                        onDecrement={
+                            () =>
+                                productCount > 1
+                                    ? dispatch(
+                                          changeProductQuantity({
+                                              id: product.id,
+                                              count: productCount - 1,
+                                          })
+                                      )
+                                    : // dispatch({
+                                      //       type: 'CHANGE_PRODUCT_QUANTITY',
+                                      //       id: product.id,
+                                      //       count: productCount - 1,
+                                      //   })
+
+                                      dispatch(
+                                          deleteProductFromCart({
+                                              id: product.id,
+                                          })
+                                      )
+
+                            //   dispatch({
+                            //       type: 'DELETE_PRODUCT_FROM_CART',
+                            //       id: product.id,
+                            //   })
                         }
                         onIncrement={() =>
-                            dispatch({
-                                type: 'CHANGE_PRODUCT_QUANTITY',
-                                id: product.id,
-                                count: productCount + 1,
-                            })
+                            dispatch(
+                                changeProductQuantity({
+                                    id: product.id,
+                                    count: productCount + 1,
+                                })
+                            )
                         }
                         minCount={0}
                     />
                     <Button
                         variant="outlined"
-                        onClick={() =>
-                            dispatch({
-                                type: 'DELETE_PRODUCT_FROM_CART',
-                                id: product.id,
-                            })
+                        onClick={
+                            () =>
+                                dispatch(
+                                    deleteProductFromCart({
+                                        id: product.id,
+                                    })
+                                )
+                            // dispatch({
+                            //     type: 'DELETE_PRODUCT_FROM_CART',
+                            //     id: product.id,
+                            // })
                         }
                     >
                         <DeleteIcon />

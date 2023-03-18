@@ -10,46 +10,52 @@ const initialState: State = {
     2: 4,
 }
 
-const cartReducer = (state = initialState, action: AnyAction) => {
-    switch (action.type) {
-        case 'ADD_PRODUCT_TO_CART':
-            return {
-                ...state,
-                [action.id]: (state[action.id] || 0) + action.count,
-            }
+// const cartReducer = (state = initialState, action: AnyAction) => {
+//     switch (action.type) {
+//         case 'ADD_PRODUCT_TO_CART':
+//             return {
+//                 ...state,
+//                 [action.id]: (state[action.id] || 0) + action.count,
+//             }
 
-        case 'DELETE_PRODUCT_FROM_CART': {
-            return omit(state, action.id)
-        }
+//         case 'DELETE_PRODUCT_FROM_CART': {
+//             return omit(state, action.id)
+//         }
 
-        case 'CHANGE_PRODUCT_QUANTITY': {
-            return {
-                ...state,
-                [action.id]: action.count,
-            }
-        }
-        default:
-            return state
-    }
-}
+//         case 'CHANGE_PRODUCT_QUANTITY': {
+//             return {
+//                 ...state,
+//                 [action.id]: action.count,
+//             }
+//         }
+//         default:
+//             return state
+//     }
+// }
+// export default cartReducer
 
-// export const cartSlice = createSlice({
-//     name: 'count',
-//     initialState,
-//     reducers: {
-//         onIncrement: (state, action) => ({
-//             ...state,
-//             [action.payload]: state[action.payload] + 1,
-//         }),
-//         onDecrement: (state, action) => ({
-//             ...state,
-//             [action.payload]: state[action.payload] - 1,
-//         }),
-//     },
-// })
+export const cartSlice = createSlice({
+    name: 'cartProduct',
+    initialState,
+    reducers: {
+        changeProductQuantity: (state, action) => ({
+            ...state,
+            [action.payload.id]: action.payload.count,
+        }),
+        deleteProductFromCart: (state, action) =>
+            omit(state, action.payload.id),
+        addProductToCart: (state, action) => ({
+            ...state,
+            [action.payload.id]:
+                (state[action.payload.id] || 0) + action.payload.count,
+        }),
+    },
+})
 
-// export const { onIncrement, onDecrement } = cartSlice.actions
+export const {
+    addProductToCart,
+    deleteProductFromCart,
+    changeProductQuantity,
+} = cartSlice.actions
 
-// export default cartSlice.reducer
-
-export default cartReducer
+export default cartSlice.reducer
