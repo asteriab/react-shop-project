@@ -76,4 +76,5 @@ const ProductsListItem = ({
         </Card>
     )
 }
+
 export default ProductsListItem
