@@ -38,7 +38,7 @@ const ProductsListItem = ({
     }
     const isLiked = useAppSelector((state) => state.productsLike[id])
     const dispatch = useAppDispatch()
-    const count2 = useAppSelector((state) => state.productsInCart[id])
+    // const count2 = useAppSelector((state) => state.productsInCart[id])
 
     return (
         <Card>
@@ -59,7 +59,7 @@ const ProductsListItem = ({
                 <div className="product-price">${price}</div>
 
                 <Quantity
-                    count={count2}
+                    count={count}
                     onDecrement={onDecrement}
                     onIncrement={onIncrement}
                     minCount={1}
