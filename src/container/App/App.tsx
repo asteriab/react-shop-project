@@ -13,7 +13,7 @@ import ShippingPage from 'pages/ShippingPage/ShippingPage'
 import { omit } from 'lodash'
 
 type Props = {}
-type ProductsInCartType = {
+export type ProductsInCartType = {
     [id: number]: number
 }
 

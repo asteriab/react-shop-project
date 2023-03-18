@@ -1,4 +1,6 @@
+import CartProductList from 'components/CartProductList/CartProductList'
 import CartTotal from 'components/CartTotal/CartTotal'
+import { useAppSelector } from 'redux/hooks'
 
 type Props = {
     productsInCart: {
@@ -6,11 +8,13 @@ type Props = {
     }
 }
 
-const CartHeader = ({
-    productsInCart    
-}: Props) => {
+const CartHeader = ({}: Props) => {
+    const productsInCart = useAppSelector((state) => state.productsInCart)
     return (
-            <CartTotal productsInCart={productsInCart}/>
+        <div>
+            <CartProductList productsInCart={productsInCart} />
+            <CartTotal productsInCart={productsInCart} />
+        </div>
     )
 }
 export default CartHeader
