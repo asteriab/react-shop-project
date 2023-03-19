@@ -7,7 +7,8 @@ import {
     Typography,
 } from '@mui/material'
 import { useState } from 'react'
-import { text } from 'stream/consumers'
+import { useAppDispatch, useAppSelector } from 'redux/hooks'
+import { addReview } from 'redux/reviewsReducer'
 
 type Props = {}
 
@@ -17,19 +18,8 @@ type Review = {
 }
 
 const Reviews = (props: Props) => {
-    const arrReviews: Review[] = [
-        {
-            name: 'John',
-            text: 'this is the review',
-        },
-        { name: 'John2', text: 'this is the review' },
-        {
-            name: 'John3',
-            text: 'this is the review',
-        },
-    ]
-
-    const [reviews, setReviews] = useState<Review[]>(arrReviews)
+    const arrReviews = useAppSelector((state) => state.reviews)
+    const dispatch = useAppDispatch()
     const [newReview, setNewReview] = useState<Review>({
         name: '',
         text: '',
@@ -50,9 +40,7 @@ const Reviews = (props: Props) => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        setReviews((prevState) => {
-            return [...prevState, newReview]
-        })
+        dispatch(addReview(newReview))
         setNewReview({ name: '', text: '' })
     }
 
@@ -67,7 +55,7 @@ const Reviews = (props: Props) => {
             >
                 Reviews
             </Typography>
-            {reviews.map(({ name, text }, i) => {
+            {arrReviews.map(({ name, text }, i) => {
                 return (
                     <Card variant="outlined" key={i}>
                         <CardContent>

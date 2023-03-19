@@ -42,8 +42,7 @@ export const cartSlice = createSlice({
             ...state,
             [action.payload.id]: action.payload.count,
         }),
-        deleteProductFromCart: (state, action) =>
-            omit(state, action.payload.id),
+        deleteProductFromCart: (state, action) => omit(state, action.payload),
         addProductToCart: (state, action) => ({
             ...state,
             [action.payload.id]:

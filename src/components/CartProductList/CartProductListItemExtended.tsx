@@ -54,9 +54,7 @@ const CartProductListItemExtended = ({ product, productCount }: Props) => {
                                       //   })
 
                                       dispatch(
-                                          deleteProductFromCart({
-                                              id: product.id,
-                                          })
+                                          deleteProductFromCart(product.id)
                                       )
 
                             //   dispatch({
