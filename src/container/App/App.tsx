@@ -9,6 +9,7 @@ import CartPage from 'pages/CartPage/CartPage'
 import AboutPage from 'pages/AboutPage/AboutPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
+import ProductPage from 'pages/ProductPage/ProductPage'
 
 type Props = {}
 export type ProductsInCartType = {
@@ -27,6 +28,7 @@ const App = (props: Props) => {
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/payment" element={<PaymentPage />} />
                     <Route path="/shipping" element={<ShippingPage />} />
+                    <Route path="/products/:id" element={<ProductPage />} />
                 </Routes>
             </Container>
             <Footer />
